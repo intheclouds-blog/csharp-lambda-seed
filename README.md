@@ -6,6 +6,8 @@ Simple template project for creating an AWS Lambda function in C# with xUnit.net
 
 * Flatter directory structure than the AWS supplied Lambda templates
 * Simple .gitignore appropriate for C# projects
+* CloudFormation template for CodePipeline CI/CD
+* CloudFormation SAM template for Lambda function provisioning
 
 ### Getting Started
 
@@ -26,6 +28,8 @@ Simple template project for creating an AWS Lambda function in C# with xUnit.net
 ### CodePipeline Setup
 
 Deploy the `pipeline-template.yml` CloudFormation template to provision the AWS CodePipeline for the function using a command like the following:
+
+*NOTE:* The `pipeline-template.yml` template assumes a CodeCommit repository. Adjustments will be needed to work with GitHub.
 
 ```
 aws cloudformation deploy --template-file ./pipeline-template.yml \
