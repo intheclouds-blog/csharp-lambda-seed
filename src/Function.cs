@@ -10,15 +10,17 @@ using Amazon.Lambda.Core;
 
 namespace InTheClouds.Lambda.Seed
 {
+    /// <summary>
+    /// Represents a Lambda function for converting a string to upper case.
+    /// </summary>
     public class Function
     {
-        
         /// <summary>
-        /// A simple function that takes a string and does a ToUpper
+        /// Converts an input string to upper case.
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="context"></param>
-        /// <returns></returns>
+        /// <param name="input">The string to convert to upper case.</param>
+        /// <param name="context">The <see cref="ILambdaContext" /> for the function.</param>
+        /// <returns>An upper case version of the input string.</returns>
         public string FunctionHandler(string input, ILambdaContext context)
         {
             return input?.ToUpper();

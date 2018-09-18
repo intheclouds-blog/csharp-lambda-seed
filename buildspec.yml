@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Starting build at `date` in `pwd`"
+      - lsb_release -a
+      - aws --v
+      - echo ".NET Core `dotnet --version`"
+      - ls -l
+  pre_build:
+    commands:
+      - echo "Running tests at `date` in `pwd`"
+      - dotnet test ./test
+  build:
+    commands:
+      - echo "Starting build and deployment at `date` in `pwd`"
+      - cd src
+      - dotnet lambda deploy-serverless -sn $FUNCTION_NAME -c Release -sb $ACCOUNT_ID-$FUNCTION_NAME-codebuild-artifacts -t ../template.yml -tp FunctionName=$FUNCTION_NAME --region $AWS_REGION
+      - cd ..
+  post_build:
+    commands:
+      - echo "Build completed at `date`"

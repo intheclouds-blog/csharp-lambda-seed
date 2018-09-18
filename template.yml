@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: AWS CloudFormation template to provision a Lambda function and supporting resources
+
+Parameters:
+  FunctionName:
+    Type: String
+    Description: The name for the function
+
+Resources:
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Ref FunctionName
+      Description: A simple function that takes a string and does a ToUpper
+      Handler: InTheClouds.Lambda.Seed::InTheClouds.Lambda.Seed.Function::FunctionHandler
+      Runtime: dotnetcore2.1
+      Timeout: 30
+      MemorySize: 128
+      CodeUri: ./
+

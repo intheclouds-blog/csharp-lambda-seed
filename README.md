@@ -1,6 +1,6 @@
 # csharp-lambda-seed
 
-Simple template project for creating an AWS Lambda function in C# with xUnit&#46;net unit tests.
+Simple template project for creating an AWS Lambda function in C# with xUnit.net unit tests.
 
 ### Features
 
@@ -19,9 +19,20 @@ Simple template project for creating an AWS Lambda function in C# with xUnit&#46
 
     `dotnet build ./src`
 
-4. Ensure the xUnit&#46;net tests run successfully:
+4. Ensure the xUnit.net tests run successfully:
 
     `dotnet test ./test`
+
+### CodePipeline Setup
+
+Deploy the `pipeline-template.yml` CloudFormation template to provision the AWS CodePipeline for the function using a command like the following:
+
+```
+aws cloudformation deploy --template-file ./pipeline-template.yml \
+    --stack-name csharp-lambda-seed-pipeline \
+    --capabilities CAPABILITY_NAMED_IAM \
+    --parameter-overrides FunctionName=csharp-lambda-seed RepositoryName=csharp-lambda-seed
+```
 
 ### Dev Dependencies
 
@@ -33,6 +44,6 @@ Simple template project for creating an AWS Lambda function in C# with xUnit&#46
 
 ### Test Dependencies
 
-* xUnit&#46;net 2.3.1
+* xUnit.net 2.3.1
 * Amazon.Lambda.TestUtilities 1.0.0
 * Microsoft.NET.Test.Sdk 15.5.0
